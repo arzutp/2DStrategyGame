@@ -14,6 +14,6 @@ public class UnitSpawner : MonoBehaviour
     public void Update()
     {
         if (Input.GetMouseButtonDown(0)) 
-            objectPooler.SpawnFromPool("Unit", Input.mousePosition, Quaternion.identity);
+            objectPooler.SpawnFromPool("Unit", Camera.main.ScreenToWorldPoint( new Vector3(Input.mousePosition.x,Input.mousePosition.y, 10f)), Quaternion.identity, transform);
     }
 }

@@ -9,9 +9,9 @@ public class Unit : MonoBehaviour, IPooledObject
 
     public void OnObjectSpawn()
     {
-        float xForce = Random.Range(-sideForce, sideForce);
-        float yForce = Random.Range(upForce / 2f, upForce);
+        //float xForce = Random.Range(-sideForce, sideForce);
+        //float yForce = Random.Range(upForce / 2f, upForce);
 
-        transform.position = new Vector2(xForce, yForce);
+        //transform.position = new Vector2(xForce, yForce);
     }
 }
