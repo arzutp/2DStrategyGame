@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Building buildingToPlace;
+    Structure buildingToPlace;
     public GridManager Grid;
-    [SerializeField] InputSystem inputSystem;
+    [SerializeField] CustomCursor CustomCursor;
 
     private void Update()
     {
@@ -18,9 +18,8 @@ public class GameManager : MonoBehaviour
             foreach (KeyValuePair<Vector2, Tile> tile in Grid.Tiles)
             {
                 float dist = Vector2.Distance(tile.Key, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                if (dist < 1.0f)
+                if (dist < 0.3f)
                 {
-                    //nearestDistance = dist;
                     nearestTile = tile.Value;
                 }
             }
@@ -30,19 +29,18 @@ public class GameManager : MonoBehaviour
                 Instantiate(buildingToPlace, nearestTile.transform.position, Quaternion.identity, transform);
                 buildingToPlace = null;
                 nearestTile.isFull = true;
-                inputSystem.gameObject.SetActive(false);
+                CustomCursor.gameObject.SetActive(false);
                 Cursor.visible = true;
-
             }
         }
     }
-    public void DragBuilding(Building building)
+    public void DragBuilding(Structure structure)
     {
-        inputSystem.gameObject.SetActive(true);  //týkladýðýmýz yerde input system i aktif ediyoruz
-        inputSystem.GetComponent<SpriteRenderer>().sprite = building.GetComponent<SpriteRenderer>().sprite;   //butondaki objenin sprite ini kullanip hareketi sagliyoruz
+        CustomCursor.gameObject.SetActive(true);  //týkladýðýmýz yerde input system i aktif ediyoruz
+        CustomCursor.GetComponent<SpriteRenderer>().sprite = structure.GetComponent<SpriteRenderer>().sprite;   //butondaki objenin sprite ini kullanip hareketi sagliyoruz
         Cursor.visible = false;
 
-        buildingToPlace = building;
+        buildingToPlace = structure;
         //buildingToPlace = Instantiate(building);
         //Grid.gameObject.SetActive(true);
     }

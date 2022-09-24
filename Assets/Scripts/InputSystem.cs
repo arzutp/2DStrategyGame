@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class InputSystem : MonoBehaviour
 {
-    void Update()
+    public Vector2 MousePosition()
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = mousePosition;
+        return mousePosition;
     }
 }

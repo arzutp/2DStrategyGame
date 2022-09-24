@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFull: 0
-  baseColor: {r: 0.3333334, g: 0.99215686, b: 0.3626186, a: 0}
-  offsetColor: {r: 0.028681278, g: 1, b: 0, a: 0}
+  baseColor: {r: 0, g: 1, b: 0.041666746, a: 0}
+  offsetColor: {r: 0.14746754, g: 0.754717, b: 0.03203986, a: 0}
   renderer: {fileID: 3753132555410623306}
   highligth: {fileID: 4253660579728190483}
 --- !u!61 &6070575782599877235
@@ -200,7 +200,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.59607846}
+  m_Color: {r: 1, g: 0.9103774, b: 0.9103774, a: 0.3764706}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
