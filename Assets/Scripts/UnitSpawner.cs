@@ -1,19 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class UnitSpawner : MonoBehaviour
+using Enums;
+public class UnitSpawner : ObjectPooler
 {
-    ObjectPooler objectPooler;
-
     private void Start()
     {
-        objectPooler = ObjectPooler.Instance;
+        PoolAddObject();
     }
 
     public void Update()
     {
         if (Input.GetMouseButtonDown(0)) 
-            objectPooler.SpawnFromPool("Unit", Camera.main.ScreenToWorldPoint( new Vector3(Input.mousePosition.x,Input.mousePosition.y, 10f)), Quaternion.identity, transform);
+            SpawnFromPool(Units.Swordman.ToString(), Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y, 10f)), Quaternion.identity);
     }
 }
