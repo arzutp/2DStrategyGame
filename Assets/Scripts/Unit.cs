@@ -1,17 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class Unit : MonoBehaviour, IPooledObject
 {
-    public float upForce = 5f;
-    public float sideForce = 8f;
+    private Vector3 target;
+    [SerializeField] NavMeshAgent navMeshAgent;
 
-    public void OnObjectSpawn()  
+    private void Awake()
     {
-        //float xForce = Random.Range(-sideForce, sideForce);
-        //float yForce = Random.Range(upForce / 2f, upForce);
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
+    }
+    private void Update()
+    {
+        setTargetPosition();
+        setAgentPosition();
+    }
+    private void setTargetPosition()
+    {
+        if (Input.GetMouseButtonDown(0))
+            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+    private void setAgentPosition()
+    {
+        navMeshAgent.SetDestination(new Vector2(target.x, target.y));
+    }
+    public void OnObjectSpawn()
+    {
 
-        //transform.position = new Vector2(xForce, yForce);
     }
 }

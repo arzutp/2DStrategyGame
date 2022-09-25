@@ -4,19 +4,8 @@ using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
 {
-    public static ObjectPooler Instance;
-    private void Awake()
-    {
-        Instance = this;
-    }
-
     public List<Pool> Pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
-
-    private void Start()
-    {
-        
-    }
 
     public void PoolAddObject()
     {
