@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class ButtonInformation : MonoBehaviour
 {
-    public Image buttonImage;
-
+    [SerializeField] Image buttonImage;
     public void SetImage(Sprite image)
     {
         buttonImage.sprite = image;

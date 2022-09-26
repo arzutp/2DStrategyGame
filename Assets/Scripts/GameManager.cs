@@ -1,19 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
+    Structure buildingToPlace;
+    public GridManager Grid;
+    [SerializeField] CustomCursor CustomCursor;
     public static GameManager Init;
 
     public void Awake()
     {
         Init = this;
     }
-    Structure buildingToPlace;
-    public GridManager Grid;
-    [SerializeField] CustomCursor CustomCursor;
-
     private void Update()
     {
         if (Input.GetMouseButtonDown(0) && buildingToPlace != null)
@@ -40,12 +41,14 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    public static Action<string,Sprite> OnStructureInformation;
     public void DragBuilding(Structure structure)
     {
         CustomCursor.gameObject.SetActive(true);  //týkladýðýmýz yerde input system i aktif ediyoruz
-        CustomCursor.GetComponent<SpriteRenderer>().sprite = structure.GetComponent<SpriteRenderer>().sprite;   //butondaki objenin sprite ini kullanip hareketi sagliyoruz
+        CustomCursor.SetSprite(structure.GetImage());  //butondaki objenin sprite ini kullanip hareketi sagliyoruz
         Cursor.visible = false;
-
+        OnStructureInformation?.Invoke(structure.GetName(), structure.GetImage());
         buildingToPlace = structure;
         //buildingToPlace = Instantiate(building);
         //Grid.gameObject.SetActive(true);
