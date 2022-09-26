@@ -6,6 +6,11 @@ public class ObjectPooler : MonoBehaviour
 {
     public List<Pool> Pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
+    public List<GameObject> structures;
+    public virtual void Initialize()
+    {
+
+    }
 
     public void PoolAddObject()
     {
@@ -43,6 +48,11 @@ public class ObjectPooler : MonoBehaviour
         //    pooledObject.OnObjectSpawn();
         poolDictionary[tag].Enqueue(objectToSpawn);
         return objectToSpawn;
+    }
+
+    public void ReturnToPool(GameObject gameObject)
+    {
+        gameObject.SetActive(false);
     }
 }
 

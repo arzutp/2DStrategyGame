@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7127026677361177830}
   - component: {fileID: 6195902339405395775}
   - component: {fileID: 1388736093173182932}
+  - component: {fileID: 3146168695918024489}
   m_Layer: 0
   m_Name: Barrak
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774616735032331887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 281, y: 301, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,5 +96,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5c4462472a90541b4a9593a143ef9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  Image: {fileID: 0}
+  Name: Barrak
+  spriteRenderer: {fileID: 6195902339405395775}
+--- !u!208 &3146168695918024489
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774616735032331887}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.64000005, y: 0.64000005, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

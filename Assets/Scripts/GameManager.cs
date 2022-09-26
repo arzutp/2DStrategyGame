@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Init;
+
+    public void Awake()
+    {
+        Init = this;
+    }
     Structure buildingToPlace;
     public GridManager Grid;
     [SerializeField] CustomCursor CustomCursor;

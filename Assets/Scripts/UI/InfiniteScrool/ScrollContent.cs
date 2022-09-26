@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ScrollContent : MonoBehaviour
 {
+    [SerializeField] Sprite image;
+    [SerializeField] PoolController poolController;
     #region Public Properties
     public float ItemSpacing { get { return itemSpacing; } }
     public float VerticalMargin { get { return verticalMargin; } }
@@ -22,6 +25,11 @@ public class ScrollContent : MonoBehaviour
 
     #endregion
 
+    public void Set(int a)
+    {
+        Debug.Log(a);
+    }
+
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -30,6 +38,12 @@ public class ScrollContent : MonoBehaviour
         for (int i = 0; i < rectTransform.childCount; i++)  //sirayla her butonu sahneye yerleştiriyor
         {
             rtChildren[i] = rectTransform.GetChild(i) as RectTransform;
+            Structure structure = poolController.StructureRandomReturn();
+            image = structure.GetImage();
+            ButtonInformation buttonInformation = rtChildren[i].GetComponent<ButtonInformation>();
+            buttonInformation.SetImage(image);
+            buttonInformation.ButtonListener(structure);
+     
         }
 
         height = rectTransform.rect.height - (2 * verticalMargin);

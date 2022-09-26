@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+
+[RequireComponent(typeof(NavMeshAgent))]
 public class Unit : MonoBehaviour, IPooledObject
 {
     private Vector3 target;
@@ -29,5 +31,10 @@ public class Unit : MonoBehaviour, IPooledObject
     public void OnObjectSpawn()
     {
 
+    }
+
+    public void Reset()
+    {
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 }
