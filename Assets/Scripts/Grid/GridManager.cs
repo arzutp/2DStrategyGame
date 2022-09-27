@@ -29,7 +29,7 @@ public class GridManager : MonoBehaviour
                 Tiles.Add(new Vector2(x, y), spawnedTile);
             }
         }
-        cam.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 + 0.5f, -10f);
+        cam.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10f);
     }
 
     public Tile GetTileAtPosition(Vector2 pos)

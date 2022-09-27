@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
     Structure buildingToPlace;
-    public GridManager Grid;
+    [SerializeField] GridManager Grid;
     [SerializeField] CustomCursor CustomCursor;
+    [SerializeField] PoolController poolController;
+
+    public static Action<string, Sprite> OnStructureInformation;
+
     public static GameManager Init;
+
 
     public void Awake()
     {
@@ -17,12 +21,16 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && buildingToPlace != null)
+        placeToBuilding();
+    }
+
+    private void placeToBuilding()
+    {
+        if (Input.GetMouseButtonDown(0) && buildingToPlace != null)  
         {
             Tile nearestTile = null;
-            float nearestDistance = float.MaxValue;
             buildingToPlace.transform.position = Input.mousePosition;
-            foreach (KeyValuePair<Vector2, Tile> tile in Grid.Tiles)
+            foreach (KeyValuePair<Vector2, Tile> tile in Grid.Tiles) //seçtiðim objeye yakýn tile a bulmaya çalýþýyorum çalýþýyorum
             {
                 float dist = Vector2.Distance(tile.Key, Camera.main.ScreenToWorldPoint(Input.mousePosition));
                 if (dist < 0.3f)
@@ -31,9 +39,11 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            if (nearestTile != null && nearestTile.isFull == false)
+            if (nearestTile != null && nearestTile.isFull == false)  //bulunduðum tile boþ ise oraya objeyi yerleþtiriyorum
             {
-                Instantiate(buildingToPlace, nearestTile.transform.position, Quaternion.identity, transform);
+                poolController.GetPool(buildingToPlace,buildingToPlace.Name, nearestTile.transform.position, Quaternion.identity);
+                //buildingToPlace.GetComponent<ObjectPooler>().SpawnFromPool(buildingToPlace.Name, nearestTile.transform.position, Quaternion.identity);
+                //Instantiate(buildingToPlace, nearestTile.transform.position, Quaternion.identity, transform);
                 buildingToPlace = null;
                 nearestTile.isFull = true;
                 CustomCursor.gameObject.SetActive(false);
@@ -42,7 +52,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static Action<string,Sprite> OnStructureInformation;
+    
     public void DragBuilding(Structure structure)
     {
         CustomCursor.gameObject.SetActive(true);  //týkladýðýmýz yerde input system i aktif ediyoruz

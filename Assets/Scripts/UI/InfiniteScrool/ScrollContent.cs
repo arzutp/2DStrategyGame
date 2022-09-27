@@ -25,11 +25,6 @@ public class ScrollContent : MonoBehaviour
 
     #endregion
 
-    public void Set(int a)
-    {
-        Debug.Log(a);
-    }
-
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -37,17 +32,16 @@ public class ScrollContent : MonoBehaviour
 
         for (int i = 0; i < rectTransform.childCount; i++)  //sirayla her butonu sahneye yerleştiriyor
         {
-            rtChildren[i] = rectTransform.GetChild(i) as RectTransform;
-            Structure structure = poolController.StructureRandomReturn();
+            rtChildren[i] = rectTransform.GetChild(i) as RectTransform; //butonları sahneye yerleştirirken bilgilerini de dolduruyoruz
+            Structure structure = poolController.StructureRandomReturn(); //pool dan random building ve barrak objelerini alıyorum
             image = structure.GetImage();
             ButtonInformation buttonInformation = rtChildren[i].GetComponent<ButtonInformation>();
             buttonInformation.SetImage(image);
+
             buttonInformation.ButtonListener(structure);
-     
         }
 
         height = rectTransform.rect.height - (2 * verticalMargin);
-
         childWidth = rtChildren[0].rect.width;
         childHeight = rtChildren[0].rect.height;
         InitializeContentVertical();

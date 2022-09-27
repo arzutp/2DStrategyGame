@@ -31,4 +31,17 @@ public class PoolController : MonoBehaviour
         int buildingIndex = Random.Range(0, buildingPool.structures.Count);
         return buildingPool.structures[buildingIndex].GetComponent<Structure>();
     }
+    
+    public void GetPool(Structure structure, string tag, Vector3 position, Quaternion rotation)
+    {
+        if(structure.Type == Enums.Objects.Barrak)
+        {
+            barrackPool.SpawnFromPool(tag, position, rotation);
+        }
+        if(structure.Type == Enums.Objects.Building)
+        {
+            buildingPool.SpawnFromPool(tag, position, rotation); 
+        }
+    }
+
 }

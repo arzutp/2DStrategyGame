@@ -1,22 +1,9 @@
 namespace Enums
 {
-    public enum Units
+    public enum Objects
     {
-        Dwarvenminer,
-        Swordman
-    }
-
-    public enum Buildings
-    {
+        Soldier,
         Building,
-        Church,
-        Firestation,
-        SignalFire
-    }
-
-    public enum Barraks
-    {
-        Barrak,
-        Barrak1
+        Barrak
     }
 }

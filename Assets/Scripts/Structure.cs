@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Enums;
 //building ve barrak için genel sýnýf
 public abstract class Structure : MonoBehaviour, IPooledObject
 {
+    public Objects Type;
     public string Name;
     public SpriteRenderer spriteRenderer;
     public string GetName()
@@ -17,7 +18,7 @@ public abstract class Structure : MonoBehaviour, IPooledObject
     }
     public void OnObjectSpawn()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public void Reset()

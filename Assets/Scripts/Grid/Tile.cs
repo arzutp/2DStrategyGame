@@ -19,7 +19,7 @@ public class Tile : MonoBehaviour
     {
         highligth.SetActive(true);
         if (isFull)
-            highligth.GetComponent<SpriteRenderer>().color = Color.red;
+            highligth.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0, 0.5f);
     }
 
     private void OnMouseExit()

@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class Building : Structure
 {
-    public void OnObjectSpawn()
-    {
-        throw new System.NotImplementedException();
-    }
+
 }
