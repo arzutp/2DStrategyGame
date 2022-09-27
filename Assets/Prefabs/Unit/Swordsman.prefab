@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7029ebbd11e0945b83b55ac1b102b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Swordsman
+  spriteRenderer: {fileID: 1678225711562546988}
   navMeshAgent: {fileID: 423334060283057817}
 --- !u!195 &423334060283057817
 NavMeshAgent:

@@ -14,10 +14,12 @@ public class InformationUI : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnStructureInformation += SetStructureInformation;
+        Barrack.OnUnitInformation += SetUnitInformation;
     }
     private void OnDisable()
     {
         GameManager.OnStructureInformation -= SetStructureInformation;
+        Barrack.OnUnitInformation += SetUnitInformation;
     }
     public void SetStructureInformation(string strText, Sprite img)
     {

@@ -31,13 +31,4 @@ public class GridManager : MonoBehaviour
         }
         cam.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10f);
     }
-
-    public Tile GetTileAtPosition(Vector2 pos)
-    {
-        if (Tiles.TryGetValue(pos, out var tile))
-        {
-            return tile;
-        }
-        return null;
-    }
 }

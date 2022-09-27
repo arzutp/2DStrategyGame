@@ -16,7 +16,7 @@ public abstract class Structure : MonoBehaviour, IPooledObject
     {
         return spriteRenderer.sprite;
     }
-    public void OnObjectSpawn()
+    public virtual void OnObjectSpawn()
     {
         
     }

@@ -26,4 +26,9 @@ public class Tile : MonoBehaviour
     {
         highligth.SetActive(false);
     }
+
+    public void SetIsFull(bool isFull)
+    {
+        this.isFull = isFull;
+    }
 }

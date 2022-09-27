@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Init;
 
-
     public void Awake()
     {
         Init = this;
@@ -29,8 +28,9 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && buildingToPlace != null)  
         {
             Tile nearestTile = null;
+
             buildingToPlace.transform.position = Input.mousePosition;
-            foreach (KeyValuePair<Vector2, Tile> tile in Grid.Tiles) //seçtiðim objeye yakýn tile a bulmaya çalýþýyorum çalýþýyorum
+            foreach (KeyValuePair<Vector2, Tile> tile in Grid.Tiles) //seçtiðim objeye yakýn tile a bulmaya çalýþýyorum
             {
                 float dist = Vector2.Distance(tile.Key, Camera.main.ScreenToWorldPoint(Input.mousePosition));
                 if (dist < 0.3f)
@@ -42,25 +42,23 @@ public class GameManager : MonoBehaviour
             if (nearestTile != null && nearestTile.isFull == false)  //bulunduðum tile boþ ise oraya objeyi yerleþtiriyorum
             {
                 poolController.GetPool(buildingToPlace,buildingToPlace.Name, nearestTile.transform.position, Quaternion.identity);
-                //buildingToPlace.GetComponent<ObjectPooler>().SpawnFromPool(buildingToPlace.Name, nearestTile.transform.position, Quaternion.identity);
-                //Instantiate(buildingToPlace, nearestTile.transform.position, Quaternion.identity, transform);
                 buildingToPlace = null;
-                nearestTile.isFull = true;
+                nearestTile.SetIsFull(true);
                 CustomCursor.gameObject.SetActive(false);
                 Cursor.visible = true;
             }
         }
     }
 
-    
     public void DragBuilding(Structure structure)
     {
         CustomCursor.gameObject.SetActive(true);  //týkladýðýmýz yerde input system i aktif ediyoruz
+        CustomCursor.gameObject.transform.localScale = structure.transform.localScale; //custom cursor bizim gecici objemiz gibi islev goruyor objenin ozelliklerini o yuzden custom cursor a atýyorum
         CustomCursor.SetSprite(structure.GetImage());  //butondaki objenin sprite ini kullanip hareketi sagliyoruz
         Cursor.visible = false;
-        OnStructureInformation?.Invoke(structure.GetName(), structure.GetImage());
+        OnStructureInformation?.Invoke(structure.GetName(), structure.GetImage());  //Information kýsmýna bilgileri yazdýrmak için action kullandým
+        if (structure.Type == Enums.Objects.Barrak)
+            structure.GetComponent<Barrack>().SetUnitInformation();
         buildingToPlace = structure;
-        //buildingToPlace = Instantiate(building);
-        //Grid.gameObject.SetActive(true);
     }
 }

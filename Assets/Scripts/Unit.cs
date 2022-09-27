@@ -6,6 +6,9 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Unit : MonoBehaviour, IPooledObject
 {
+    public string Name;
+    public SpriteRenderer spriteRenderer;
+    
     private Vector3 target;
     [SerializeField] NavMeshAgent navMeshAgent;
 
@@ -13,6 +16,14 @@ public class Unit : MonoBehaviour, IPooledObject
     {
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
+    }
+    public string GetName()
+    {
+        return Name;
+    }
+    public Sprite GetImage()
+    {
+        return spriteRenderer.sprite;
     }
     private void Update()
     {

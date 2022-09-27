@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7029ebbd11e0945b83b55ac1b102b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Dwarven Miner
+  spriteRenderer: {fileID: 1303615094048122320}
   navMeshAgent: {fileID: 2578443836675836447}
 --- !u!195 &2578443836675836447
 NavMeshAgent:
