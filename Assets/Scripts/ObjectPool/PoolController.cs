@@ -7,9 +7,11 @@ public class PoolController : MonoBehaviour
     [SerializeField] BuildingPoolController buildingPool;
     [SerializeField] BarrackPoolController barrackPool;
     [SerializeField] UnitSpawnerController unitSpawner;
+    public static PoolController Init;
 
-    private void Awake()
+    public void Awake()
     {
+        Init = this;
         Initialize();
     }
     public void Initialize()
@@ -44,9 +46,10 @@ public class PoolController : MonoBehaviour
         }
     }
 
-    public void UnitGetPool(string tag, Vector3 position, Quaternion rotation)
+    public void UnitGetPool(int unitCount, string tag, Vector3 position, Quaternion rotation)
     {
-        unitSpawner.SpawnFromPool(tag, position, rotation);
+        if(unitSpawner.poolDictionary[tag].Count > unitCount)
+            unitSpawner.SpawnFromPool(tag, position, rotation);
     }
 
 }

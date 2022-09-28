@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Enums;
+
 //building ve barrak için genel sýnýf
 public abstract class Structure : MonoBehaviour, IPooledObject
 {
@@ -16,7 +17,7 @@ public abstract class Structure : MonoBehaviour, IPooledObject
     {
         return spriteRenderer.sprite;
     }
-    public virtual void OnObjectSpawn(string tag, Vector3 position, Quaternion rotation)
+    public virtual void OnObjectSpawn(bool isActive)
     {
         
     }

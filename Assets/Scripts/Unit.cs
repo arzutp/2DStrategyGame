@@ -39,7 +39,7 @@ public class Unit : MonoBehaviour, IPooledObject
     {
         navMeshAgent.SetDestination(new Vector2(target.x, target.y));
     }
-    public void OnObjectSpawn(string tag, Vector3 position, Quaternion rotation)
+    public void OnObjectSpawn(bool isActive)
     {
 
     }

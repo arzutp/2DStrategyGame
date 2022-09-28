@@ -3262,7 +3262,7 @@ MonoBehaviour:
   - Tag: Dwarvenminer
     Prefab: {fileID: 1303615094048122322, guid: d4a11339ec86b7b4eb7ccedf09b8b2a2, type: 3}
     Size: 5
-  - Tag: Swordman
+  - Tag: Swordsman
     Prefab: {fileID: 1678225711562546990, guid: c68dd30f9218761498281d953ed85dfd, type: 3}
     Size: 5
   structures: []
@@ -3290,7 +3290,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2092078240}
   - component: {fileID: 2092078241}
-  - component: {fileID: 2092078242}
   m_Layer: 0
   m_Name: Pool
   m_TagString: Untagged
@@ -3330,20 +3329,6 @@ MonoBehaviour:
   buildingPool: {fileID: 1592641739}
   barrackPool: {fileID: 2015098326}
   unitSpawner: {fileID: 2078536610}
---- !u!114 &2092078242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2092078239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa5787b0ed2b0024aa72dbfbd66fed1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Pools: []
-  structures: []
 --- !u!1 &2121628511
 GameObject:
   m_ObjectHideFlags: 0
