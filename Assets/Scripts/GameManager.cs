@@ -6,10 +6,12 @@ using Enums;
 
 public class GameManager : MonoBehaviour
 {
-    Structure buildingToPlace;
     [SerializeField] GridManager Grid;
     [SerializeField] CustomCursor CustomCursor;
     [SerializeField] PoolController poolController;
+
+    Structure barrakStructure;
+    Structure buildingToPlace;
 
     public static Action<string, Sprite> OnStructureInformation;
 
@@ -34,7 +36,7 @@ public class GameManager : MonoBehaviour
             foreach (KeyValuePair<Vector2, Tile> tile in Grid.Tiles) //seçtiðim objeye yakýn tile a bulmaya çalýþýyorum
             {
                 float dist = Vector2.Distance(tile.Key, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                if (dist < 1f)
+                if (dist < 0.4f)
                 {
                     nearestTile = tile.Value;
                 }
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    Structure barrakStructure;
+    
     public void DragBuilding(Structure structure)
     {
         CustomCursor.gameObject.SetActive(true);  //týkladýðýmýz yerde input system i aktif ediyoruz

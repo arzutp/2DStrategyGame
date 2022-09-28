@@ -7,9 +7,6 @@ public class Barrack : Structure
 {
     [SerializeField] Unit Unit;
     [SerializeField] Transform UnitSpawnPoint;
-    bool isActive;
-    float timer;
-    int unitCount;
 
     public static Action<string, Sprite> OnUnitInformation;
 

@@ -26,4 +26,12 @@ public abstract class Structure : MonoBehaviour, IPooledObject
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Tile"))
+        {
+            collision.GetComponent<Tile>().SetIsFull(true);
+        }
+    }
 }
