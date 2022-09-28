@@ -6,15 +6,16 @@ using UnityEngine;
 public class Barrack : Structure
 {
     [SerializeField] Unit Unit;
+    PoolController poolController;
+
     public static Action<string, Sprite> OnUnitInformation;
 
     public void SetUnitInformation()
     {
         OnUnitInformation?.Invoke(Unit.GetName(), Unit.GetImage());
     }
-    public override void OnObjectSpawn()
+    public override void OnObjectSpawn(string tag, Vector3 position, Quaternion rotation)
     {
-        base.OnObjectSpawn();
-        
+        //poolController.UnitGetPool(tag, position, rotation);
     }
 }

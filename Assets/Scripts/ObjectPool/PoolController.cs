@@ -44,4 +44,9 @@ public class PoolController : MonoBehaviour
         }
     }
 
+    public void UnitGetPool(string tag, Vector3 position, Quaternion rotation)
+    {
+        unitSpawner.SpawnFromPool(tag, position, rotation);
+    }
+
 }

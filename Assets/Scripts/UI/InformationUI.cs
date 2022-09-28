@@ -15,11 +15,13 @@ public class InformationUI : MonoBehaviour
     {
         GameManager.OnStructureInformation += SetStructureInformation;
         Barrack.OnUnitInformation += SetUnitInformation;
+        Building.OnUnitInformation += SetUnitInformation;
     }
     private void OnDisable()
     {
         GameManager.OnStructureInformation -= SetStructureInformation;
         Barrack.OnUnitInformation += SetUnitInformation;
+        Building.OnUnitInformation += SetUnitInformation;
     }
     public void SetStructureInformation(string strText, Sprite img)
     {
@@ -31,5 +33,6 @@ public class InformationUI : MonoBehaviour
     {
         UnitText.text = strText;
         UnitImage.sprite = img;
+        print(UnitText + " " + UnitImage.name);
     }
 }

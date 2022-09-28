@@ -4,5 +4,5 @@ public interface IPooledObject
 {
     string GetName();
     Sprite GetImage();
-    void OnObjectSpawn();
+    void OnObjectSpawn(string tag, Vector3 position, Quaternion rotation);
 }

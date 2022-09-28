@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
         OnStructureInformation?.Invoke(structure.GetName(), structure.GetImage());  //Information kýsmýna bilgileri yazdýrmak için action kullandým
         if (structure.Type == Enums.Objects.Barrak)
             structure.GetComponent<Barrack>().SetUnitInformation();
+        else
+            structure.GetComponent<Building>().SetUnitInformation();
         buildingToPlace = structure;
     }
 }
