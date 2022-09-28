@@ -46,10 +46,10 @@ public class PoolController : MonoBehaviour
         }
     }
 
-    public void UnitGetPool(int unitCount, string tag, Vector3 position, Quaternion rotation)
+    public void UnitGetPool(string tag, Vector3 position, Quaternion rotation)
     {
-        if(unitSpawner.poolDictionary[tag].Count > unitCount)
-            unitSpawner.SpawnFromPool(tag, position, rotation);
+        //if(unitSpawner.poolDictionary[tag].Count > unitCount)
+        unitSpawner.SpawnFromPool(tag, position, rotation);
     }
 
 }

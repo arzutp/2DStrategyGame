@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Enums;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
             foreach (KeyValuePair<Vector2, Tile> tile in Grid.Tiles) //seçtiðim objeye yakýn tile a bulmaya çalýþýyorum
             {
                 float dist = Vector2.Distance(tile.Key, Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                if (dist < 0.3f)
+                if (dist < 1f)
                 {
                     nearestTile = tile.Value;
                 }
@@ -49,7 +50,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
+    Structure barrakStructure;
     public void DragBuilding(Structure structure)
     {
         CustomCursor.gameObject.SetActive(true);  //týkladýðýmýz yerde input system i aktif ediyoruz
@@ -57,10 +58,21 @@ public class GameManager : MonoBehaviour
         CustomCursor.SetSprite(structure.GetImage());  //butondaki objenin sprite ini kullanip hareketi sagliyoruz
         Cursor.visible = false;
         OnStructureInformation?.Invoke(structure.GetName(), structure.GetImage());  //Information kýsmýna bilgileri yazdýrmak için action kullandým
-        if (structure.Type == Enums.Objects.Barrak)
+        if (structure.Type == Objects.Barrak)
+        {
             structure.GetComponent<Barrack>().SetUnitInformation();
+            barrakStructure = structure;
+        }
         else
             structure.GetComponent<Building>().SetUnitInformation();
         buildingToPlace = structure;
+    }
+
+    public void GetUnitFromPool()
+    {
+        if (barrakStructure != null)
+        {
+            barrakStructure.GetComponent<Barrack>().OnUnitSpawn();
+        }
     }
 }

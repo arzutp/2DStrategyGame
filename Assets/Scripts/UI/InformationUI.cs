@@ -9,7 +9,7 @@ public class InformationUI : MonoBehaviour
     [SerializeField] Image StructureImage;
 
     [SerializeField] Text UnitText;
-    [SerializeField] Image UnitImage;
+    [SerializeField] Button UnitButton;
 
     private void OnEnable()
     {
@@ -32,7 +32,12 @@ public class InformationUI : MonoBehaviour
     public void SetUnitInformation(string strText, Sprite img)
     {
         UnitText.text = strText;
-        UnitImage.sprite = img;
-        print(UnitText + " " + UnitImage.name);
+        UnitButton.image.sprite = img;
+        ButtonListener();
+    }
+
+    public void ButtonListener()
+    {
+        UnitButton.onClick.AddListener(() => GameManager.Init.GetUnitFromPool());
     }
 }

@@ -45,7 +45,7 @@ public class ObjectPooler : MonoBehaviour
 
         IPooledObject pooledObject = objectToSpawn.GetComponent<IPooledObject>();
         if (pooledObject != null)
-            pooledObject.OnObjectSpawn(true);
+            pooledObject.OnObjectSpawn();
         poolDictionary[tag].Enqueue(objectToSpawn);
         return objectToSpawn;
     }

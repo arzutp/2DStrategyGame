@@ -12,11 +12,6 @@ public class Unit : MonoBehaviour, IPooledObject
     private Vector3 target;
     [SerializeField] NavMeshAgent navMeshAgent;
 
-    private void Awake()
-    {
-        navMeshAgent.updateRotation = false;
-        navMeshAgent.updateUpAxis = false;
-    }
     public string GetName()
     {
         return Name;
@@ -28,20 +23,23 @@ public class Unit : MonoBehaviour, IPooledObject
     private void Update()
     {
         setTargetPosition();
-        setAgentPosition();
+        //setAgentPosition();
     }
     private void setTargetPosition()
     {
         if (Input.GetMouseButtonDown(0))
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if(target != Vector3.zero)
+            setAgentPosition();
     }
     private void setAgentPosition()
     {
         navMeshAgent.SetDestination(new Vector2(target.x, target.y));
     }
-    public void OnObjectSpawn(bool isActive)
+    public void OnObjectSpawn()
     {
-
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
     }
 
     public void Reset()
