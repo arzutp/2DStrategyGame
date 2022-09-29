@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6531454851831037610}
   - component: {fileID: 8799543095656103099}
   - component: {fileID: 7476857219724360184}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Firestation
   m_TagString: Untagged
   m_Icon: {fileID: 0}

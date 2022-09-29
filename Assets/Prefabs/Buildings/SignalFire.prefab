@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4930720012936786390}
   - component: {fileID: 8402432255807373544}
   - component: {fileID: 7201816904010492733}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SignalFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1303615094048122320}
   - component: {fileID: 1303615094048122321}
   - component: {fileID: 2578443836675836447}
-  - component: {fileID: 8608587983512837765}
+  - component: {fileID: 4767216413606632499}
   m_Layer: 7
   m_Name: Dwarven Miner
   m_TagString: Untagged
@@ -109,7 +109,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1303615094048122322}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.2
+  m_Radius: 0.26
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -122,7 +122,7 @@ NavMeshAgent:
   m_BaseOffset: 0.26
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!136 &8608587983512837765
+--- !u!136 &4767216413606632499
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,7 +132,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.15
+  m_Radius: 0.27
   m_Height: 0.69
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
