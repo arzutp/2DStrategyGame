@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1303615094048122321}
   - component: {fileID: 2578443836675836447}
   - component: {fileID: 8608587983512837765}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dwarven Miner
   m_TagString: Untagged
   m_Icon: {fileID: 0}

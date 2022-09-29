@@ -6,7 +6,7 @@ using UnityEngine;
 public class Barrack : Structure
 {
     [SerializeField] Unit Unit;
-    [SerializeField] Transform UnitSpawnPoint;
+    public Transform UnitSpawnPoint;
 
     public static Action<string, Sprite> OnUnitInformation;
 
@@ -16,13 +16,13 @@ public class Barrack : Structure
     }
     public override void OnObjectSpawn()
     {
-       // PoolController.Init.UnitGetPool(Unit.Name, UnitSpawnPoint.position, Quaternion.identity);
+        // PoolController.Init.UnitGetPool(Unit.Name, UnitSpawnPoint.position, Quaternion.identity);
         //poolController.UnitGetPool(Unit.tag, position, rotation);
     }
 
     public void OnUnitSpawn()
     {
-        PoolController.Init.UnitGetPool(Unit.Name, UnitSpawnPoint.localPosition, Quaternion.identity);
+        PoolController.Init.UnitGetPool(Unit.Name, UnitSpawnPoint.position, Quaternion.identity);
     }
 
 }

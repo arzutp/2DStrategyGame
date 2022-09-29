@@ -22,20 +22,25 @@ public class Unit : MonoBehaviour, IPooledObject
     }
     private void Update()
     {
-        setTargetPosition();
+        //setTargetPosition();
         //setAgentPosition();
     }
-    private void setTargetPosition()
+
+    public void SetTarget(Vector3 position)
     {
-        if (Input.GetMouseButtonDown(0))
-            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if(target != Vector3.zero)
-            setAgentPosition();
+        navMeshAgent.destination = position;
     }
-    private void setAgentPosition()
-    {
-        navMeshAgent.SetDestination(new Vector2(target.x, target.y));
-    }
+    //private void setTargetPosition()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //        target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //    if(target != Vector3.zero)
+    //        setAgentPosition();
+    //}
+    //private void setAgentPosition()
+    //{
+    //    navMeshAgent.SetDestination(new Vector2(target.x, target.y));
+    //}
     public void OnObjectSpawn()
     {
         navMeshAgent.updateRotation = false;

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6421798801438135536}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: UnitSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3146168695918024489}
   - component: {fileID: 2016384752036973680}
   - component: {fileID: 7843628870481293323}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Barrak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774616735032331887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 319, y: 190, z: 0}
+  m_LocalPosition: {x: 2, y: 6, z: 0}
   m_LocalScale: {x: 3, y: 2.5, z: 1}
   m_Children:
   - {fileID: 6421798801438135536}

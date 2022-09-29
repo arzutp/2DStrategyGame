@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GridManager Grid;
     [SerializeField] CustomCursor CustomCursor;
     [SerializeField] PoolController poolController;
+    [SerializeField] Camera cam;
 
     Structure barrakStructure;
     Structure buildingToPlace;
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
             buildingToPlace.transform.position = Input.mousePosition;
             foreach (KeyValuePair<Vector2, Tile> tile in Grid.Tiles) //seçtiðim objeye yakýn tile a bulmaya çalýþýyorum
             {
-                float dist = Vector2.Distance(tile.Key, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                float dist = Vector2.Distance(tile.Key, cam.ScreenToWorldPoint(Input.mousePosition));
                 if (dist < 0.4f)
                 {
                     nearestTile = tile.Value;
@@ -45,6 +46,8 @@ public class GameManager : MonoBehaviour
             if (nearestTile != null && nearestTile.isFull == false)  //bulunduðum tile boþ ise oraya objeyi yerleþtiriyorum
             {
                 poolController.GetPool(buildingToPlace,buildingToPlace.Name, nearestTile.transform.position, Quaternion.identity);
+                barrakStructure = buildingToPlace;
+                barrakStructure.transform.position = nearestTile.transform.position;
                 buildingToPlace = null;
                 nearestTile.SetIsFull(true);
                 CustomCursor.gameObject.SetActive(false);
@@ -63,7 +66,6 @@ public class GameManager : MonoBehaviour
         if (structure.Type == Objects.Barrak)
         {
             structure.GetComponent<Barrack>().SetUnitInformation();
-            barrakStructure = structure;
         }
         else
             structure.GetComponent<Building>().SetUnitInformation();
@@ -72,7 +74,7 @@ public class GameManager : MonoBehaviour
 
     public void GetUnitFromPool()
     {
-        if (barrakStructure != null)
+        if (barrakStructure.Type == Objects.Barrak)
         {
             barrakStructure.GetComponent<Barrack>().OnUnitSpawn();
         }
