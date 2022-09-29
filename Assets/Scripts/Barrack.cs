@@ -7,7 +7,7 @@ public class Barrack : Structure
 {
     [SerializeField] Unit Unit;
     public Transform UnitSpawnPoint;
-
+    
     public static Action<string, Sprite> OnUnitInformation;
 
     public void SetUnitInformation()
@@ -24,5 +24,4 @@ public class Barrack : Structure
     {
         PoolController.Init.UnitGetPool(Unit.Name, UnitSpawnPoint.position, Quaternion.identity);
     }
-
 }

@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
                 barrakStructure.transform.position = nearestTile.transform.position;
                 buildingToPlace = null;
                 nearestTile.SetIsFull(true);
+                CustomCursor.SetSprite(null);
                 CustomCursor.gameObject.SetActive(false);
                 Cursor.visible = true;
             }
@@ -62,6 +63,12 @@ public class GameManager : MonoBehaviour
         CustomCursor.gameObject.transform.localScale = structure.transform.localScale; //custom cursor bizim gecici objemiz gibi islev goruyor objenin ozelliklerini o yuzden custom cursor a atýyorum
         CustomCursor.SetSprite(structure.GetImage());  //butondaki objenin sprite ini kullanip hareketi sagliyoruz
         Cursor.visible = false;
+        StructureInformation(structure);
+        buildingToPlace = structure;
+    }
+
+    public void StructureInformation(Structure structure)
+    {
         OnStructureInformation?.Invoke(structure.GetName(), structure.GetImage());  //Information kýsmýna bilgileri yazdýrmak için action kullandým
         if (structure.Type == Objects.Barrak)
         {
@@ -69,7 +76,6 @@ public class GameManager : MonoBehaviour
         }
         else
             structure.GetComponent<Building>().SetUnitInformation();
-        buildingToPlace = structure;
     }
 
     public void GetUnitFromPool()

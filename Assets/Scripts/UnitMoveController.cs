@@ -14,12 +14,14 @@ public class UnitMoveController : MonoBehaviour
 
     public void MoveToTarget()
     {
-        foreach (var item in unitSelectedList)
+        if (target != Vector3.zero)
         {
-            if (target != Vector3.zero)
+            foreach (var item in unitSelectedList)
             {
+            
                 item.SetTarget(target);
             }
+            unitSelectedList.Clear();
         }
     }
 }
