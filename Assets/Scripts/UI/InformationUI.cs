@@ -15,16 +15,14 @@ public class InformationUI : MonoBehaviour
     private void OnEnable()
     {
         GameManager.OnStructureInformation += SetStructureInformation;
-        Barrack.OnUnitInformation += SetUnitInformation;
-        Building.OnUnitInformation += SetUnitInformation;
-        PowerPlant.OnUnitInformation += SetUnitInformation;
+        Structure.OnUnitInformation += SetUnitInformation;
+        Barrack.OnMaxUnitInformation += UnitCountInformation;
     }
     private void OnDisable()
     {
         GameManager.OnStructureInformation -= SetStructureInformation;
-        Barrack.OnUnitInformation += SetUnitInformation;
-        Building.OnUnitInformation += SetUnitInformation;
-        PowerPlant.OnUnitInformation -= SetUnitInformation;
+        Structure.OnUnitInformation -= SetUnitInformation;
+        Barrack.OnMaxUnitInformation -= UnitCountInformation;
     }
     public void SetStructureInformation(string strText, Sprite img)
     {
@@ -48,5 +46,17 @@ public class InformationUI : MonoBehaviour
     public void RemoveButtonListener()
     {
         UnitButton.onClick.RemoveAllListeners();
+    }
+
+    public void UnitCountInformation()
+    {
+        maxText.gameObject.SetActive(true);
+        StartCoroutine(MaxText());
+    }
+
+    IEnumerator MaxText()
+    {
+        yield return new WaitForSeconds(0.5f);
+        maxText.gameObject.SetActive(false);
     }
 }

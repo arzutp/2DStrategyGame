@@ -1442,8 +1442,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
+    m_FontSize: 22
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
@@ -4813,7 +4813,7 @@ MonoBehaviour:
   StructureImage: {fileID: 1851769884}
   UnitText: {fileID: 48704790}
   UnitButton: {fileID: 1704331922}
-  maxText: {fileID: 0}
+  maxText: {fileID: 911594508}
 --- !u!1 &2015098324
 GameObject:
   m_ObjectHideFlags: 0
