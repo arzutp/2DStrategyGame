@@ -9,7 +9,7 @@ public class SelectionController : MonoBehaviour
     [SerializeField] LayerMask structureLayerMask;
     [SerializeField] Camera cam;
     [SerializeField] InputSystem inputSystem;
-
+    [SerializeField] CustomCursor customCursor;
     private void Update()
     {
         onUnitSelect();
@@ -44,7 +44,7 @@ public class SelectionController : MonoBehaviour
 
     private void structureSelect()  //sahnede ki objenin bilgilerini tekrardan görmek için
     {
-        if (inputSystem.LeftMouseButton())
+        if (inputSystem.LeftMouseButton() && customCursor.gameObject.active == false)
         {
             Ray worldPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(worldPoint.origin, worldPoint.direction,Mathf.Infinity, structureLayerMask);

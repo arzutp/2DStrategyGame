@@ -17,6 +17,7 @@ public class InformationUI : MonoBehaviour
         GameManager.OnStructureInformation += SetStructureInformation;
         Structure.OnUnitInformation += SetUnitInformation;
         Barrack.OnMaxUnitInformation += UnitCountInformation;
+        RemoveButtonListener();
     }
     private void OnDisable()
     {

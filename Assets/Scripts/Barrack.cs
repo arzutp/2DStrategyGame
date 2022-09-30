@@ -17,19 +17,26 @@ public class Barrack : Structure
         base.SetUnitInformation();
         OnUnitInformation?.Invoke(Unit.GetName(), Unit.GetImage());
     }
+    bool unitCountCheck;
     public override void OnObjectSpawn()
     {
-        maxUnitCount = 15;
+        unitCountCheck = true;
     }
 
     public void OnUnitSpawn()
     {
+        if (unitCountCheck)
+        {
+            maxUnitCount = 0;
+            unitCountCheck = false;
+        }
+       
         float rand = UnityEngine.Random.Range(0, 0.5f);
-        if (maxUnitCount > 0)
+        if (maxUnitCount <15)
         {
             PoolController.Init.UnitGetPool(Unit.Name, UnitSpawnPoint.position + new Vector3(rand, rand, 0), Quaternion.identity);
-            maxUnitCount--;
-            print(maxUnitCount);
+            maxUnitCount++;
+            
         }
         else 
             OnMaxUnitInformation?.Invoke();
