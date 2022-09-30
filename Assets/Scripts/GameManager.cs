@@ -69,13 +69,9 @@ public class GameManager : MonoBehaviour
 
     public void StructureInformation(Structure structure)
     {
+        barrakStructure = structure;
         OnStructureInformation?.Invoke(structure.GetName(), structure.GetImage());  //Information kýsmýna bilgileri yazdýrmak için action kullandým
-        if (structure.Type == Objects.Barrak)
-        {
-            structure.GetComponent<Barrack>().SetUnitInformation();
-        }
-        else
-            structure.GetComponent<Building>().SetUnitInformation();
+        structure.GetComponent<Structure>().SetUnitInformation();
     }
 
     public void GetUnitFromPool()

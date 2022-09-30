@@ -22,6 +22,11 @@ public abstract class Structure : MonoBehaviour, IPooledObject
         
     }
 
+    public virtual void SetUnitInformation()
+    {
+       
+    }
+
     public void Reset()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();

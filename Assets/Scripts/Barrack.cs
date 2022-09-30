@@ -10,8 +10,9 @@ public class Barrack : Structure
     
     public static Action<string, Sprite> OnUnitInformation;
 
-    public void SetUnitInformation()
+    public override void SetUnitInformation()
     {
+        base.SetUnitInformation();
         OnUnitInformation?.Invoke(Unit.GetName(), Unit.GetImage());
     }
     public override void OnObjectSpawn()
@@ -22,6 +23,7 @@ public class Barrack : Structure
 
     public void OnUnitSpawn()
     {
-        PoolController.Init.UnitGetPool(Unit.Name, UnitSpawnPoint.position, Quaternion.identity);
+        float rand = UnityEngine.Random.Range(0, 0.5f);
+        PoolController.Init.UnitGetPool(Unit.Name, UnitSpawnPoint.position+new Vector3(rand,rand,0), Quaternion.identity);
     }
 }

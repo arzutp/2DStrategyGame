@@ -4,24 +4,38 @@ using UnityEngine;
 using UnityEngine.AI;
 public class UnitMoveController : MonoBehaviour
 {
-    public List<Unit> unitSelectedList;
-    public Vector3 target;
+    public List<Unit> UnitSelectedList;
+    public Vector3 Target;
 
     private void Update()
     {
-        MoveToTarget();
+        moveToTarget();
+        targetControl();
     }
 
-    public void MoveToTarget()
+    private void moveToTarget()
     {
-        if (target != Vector3.zero)
+        if (Target != Vector3.zero)
         {
-            foreach (var item in unitSelectedList)
+            foreach (var item in UnitSelectedList)
             {
-            
-                item.SetTarget(target);
+                item.SetTarget(Target);
             }
-            unitSelectedList.Clear();
         }
+    }
+
+    private void targetControl()  //her seçtiðim unit ayný hedefe gitmesin kontrolu
+    {
+        for (int i = 0; i < UnitSelectedList.Count; i++)   //seçilen unitler ya da unit verilen hedefe ulaþtýðýnda hedef ve liste sýfýrlanýr
+        {
+            if (Vector3.Distance(UnitSelectedList[i].transform.position, Target) <= 1f)
+            {
+                if (i == UnitSelectedList.Count-1)
+                    Target = Vector3.zero;
+                UnitSelectedList.Remove(UnitSelectedList[i]);
+                continue;
+            }
+        }
+        
     }
 }

@@ -10,18 +10,21 @@ public class InformationUI : MonoBehaviour
 
     [SerializeField] Text UnitText;
     [SerializeField] Button UnitButton;
+    [SerializeField] Image maxText;
 
     private void OnEnable()
     {
         GameManager.OnStructureInformation += SetStructureInformation;
         Barrack.OnUnitInformation += SetUnitInformation;
         Building.OnUnitInformation += SetUnitInformation;
+        PowerPlant.OnUnitInformation += SetUnitInformation;
     }
     private void OnDisable()
     {
         GameManager.OnStructureInformation -= SetStructureInformation;
         Barrack.OnUnitInformation += SetUnitInformation;
         Building.OnUnitInformation += SetUnitInformation;
+        PowerPlant.OnUnitInformation -= SetUnitInformation;
     }
     public void SetStructureInformation(string strText, Sprite img)
     {
@@ -33,11 +36,17 @@ public class InformationUI : MonoBehaviour
     {
         UnitText.text = strText;
         UnitButton.image.sprite = img;
+        RemoveButtonListener();
         ButtonListener();
     }
 
     public void ButtonListener()
     {
         UnitButton.onClick.AddListener(() => GameManager.Init.GetUnitFromPool());
+    }
+
+    public void RemoveButtonListener()
+    {
+        UnitButton.onClick.RemoveAllListeners();
     }
 }

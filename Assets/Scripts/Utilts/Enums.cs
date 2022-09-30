@@ -4,6 +4,7 @@ namespace Enums
     {
         Soldier,
         Building,
+        PowerPlant,
         Barrak
     }
 }

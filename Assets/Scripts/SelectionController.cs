@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitSelectionController : MonoBehaviour
+public class SelectionController : MonoBehaviour
 {
     [SerializeField] UnitMoveController unitController;
     [SerializeField] LayerMask layerMask;
@@ -19,39 +19,38 @@ public class UnitSelectionController : MonoBehaviour
 
     private void onUnitSelect()
     {
-        if (inputSystem.LeftMouseButton())
+        //2D ile yaptýðýmda barrack collider i yuzunden uniti algýlamýyordu o yuzden bu sekilde kullandým
+        if (inputSystem.LeftMouseButton())   //unit seçme iþlemini raycast ile yaptým
         {
             RaycastHit raycastHit;
             if (Physics.Raycast(cam.ScreenPointToRay(Input.mousePosition), out raycastHit, 1000f, layerMask))
             {
                 var item = raycastHit.collider.gameObject.transform;
-                if(!unitController.unitSelectedList.Contains(item.GetComponent<Unit>()))
-                    unitController.unitSelectedList.Add(item.GetComponent<Unit>());
-                //unitController.target = raycastHit.collider.gameObject.transform;
+                if(!unitController.UnitSelectedList.Contains(item.GetComponent<Unit>()))
+                    unitController.UnitSelectedList.Add(item.GetComponent<Unit>());
             }
         }
     }
 
+    //hedef secme isleminde mouse posizyonunu baz aldým
     private void targetSelect()
     {
         if (inputSystem.RightMouseButton())
         {
-            Vector3 tempTarget = cam.ScreenToWorldPoint(Input.mousePosition);
-            unitController.target = new Vector3(tempTarget.x, tempTarget.y, 0.4f);
+            Vector2 tempTarget = inputSystem.MousePosition();
+            unitController.Target = new Vector3(tempTarget.x, tempTarget.y, 0.4f);
         }
     }
 
-    private void structureSelect()
+    private void structureSelect()  //sahnede ki objenin bilgilerini tekrardan görmek için
     {
         if (inputSystem.LeftMouseButton())
         {
-            Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero, structureLayerMask);
-
-            if (hit.collider != null)
+            Ray worldPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint.origin, worldPoint.direction,Mathf.Infinity, structureLayerMask);
+            if (hit)
             {
                  GameManager.Init.StructureInformation(hit.collider.GetComponent<Structure>());
-                //GameManager.Init.DragBuilding(hit.collider.GetComponent<Structure>());
             }
         }
     }

@@ -7,6 +7,7 @@ public class PoolController : MonoBehaviour
     [SerializeField] BuildingPoolController buildingPool;
     [SerializeField] BarrackPoolController barrackPool;
     [SerializeField] UnitSpawnerController unitSpawner;
+    [SerializeField] PowerPlantPoolController powerPlantPool;
     public static PoolController Init;
 
     public void Awake()
@@ -19,19 +20,28 @@ public class PoolController : MonoBehaviour
         buildingPool.Initialize();
         barrackPool.Initialize();
         unitSpawner.Initialize();
+        powerPlantPool.Initialize();
     }
 
     public Structure StructureRandomReturn()
     {
-        float rand = Random.Range(0, 2);
-        if(rand == 0)
+        float rand = Random.Range(0, 3);
+        switch (rand)
         {
-            int barrackIndex = Random.Range(0, barrackPool.structures.Count);
-            return barrackPool.structures[barrackIndex].GetComponent<Structure>();
-
+            case 0:
+                int barrackIndex = Random.Range(0, barrackPool.structures.Count);
+                return barrackPool.structures[barrackIndex].GetComponent<Structure>();
+            case 1:
+                int buildingIndex = Random.Range(0, buildingPool.structures.Count);
+                return buildingPool.structures[buildingIndex].GetComponent<Structure>();
+            case 2:
+                int powerPlantIndex = Random.Range(0, powerPlantPool.structures.Count);
+                return powerPlantPool.structures[powerPlantIndex].GetComponent<Structure>();
+            default:
+                break;
         }
-        int buildingIndex = Random.Range(0, buildingPool.structures.Count);
-        return buildingPool.structures[buildingIndex].GetComponent<Structure>();
+        return null;
+        
     }
     
     public void GetPool(Structure structure, string tag, Vector3 position, Quaternion rotation)
@@ -39,10 +49,16 @@ public class PoolController : MonoBehaviour
         if(structure.Type == Enums.Objects.Barrak)
         {
             barrackPool.SpawnFromPool(tag, position, rotation);
+            print(structure.name);
         }
         if(structure.Type == Enums.Objects.Building)
         {
             buildingPool.SpawnFromPool(tag, position, rotation); 
+        }
+        if (structure.Type == Enums.Objects.PowerPlant)
+        {
+            powerPlantPool.SpawnFromPool(tag, position, rotation);
+            print("bjkb");
         }
     }
 
